@@ -1,0 +1,23 @@
+citHeader("To cite robustvarComp in publications use:")
+
+## R >= 2.8.0 passes package metadata to citation().
+if(!exists("meta") || is.null(meta))
+  meta <- packageDescription("robustvarComp")
+year <- sub("-.*", "", meta$Date)
+note <- sprintf("R package version %s", meta$Version)
+
+citEntry(entry = "Manual",
+  title        = "{robustvarComp}: Robust estimation for Variance Component Models",
+  author       = personList(as.person("Claudio Agostinelli"), 
+  		   as.person("Victor J. Yohai")),
+  year         = year,
+  note         = note,
+  url          = "http://CRAN.R-project.org/package=robustvarComp",
+
+  textVersion  =
+  paste("Claudio Agostinelli and Victor J. Yohai",
+        sprintf("(%s).", year),   
+        "{robustvarComp}: Robust estimation for Variance Component Models",
+        paste(note, ".", sep = ""),
+        "URL http://CRAN.R-project.org/package=robustvarComp")
+)

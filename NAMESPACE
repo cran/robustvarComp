@@ -1,0 +1,42 @@
+useDynLib(robustvarComp, .registration=TRUE) 
+
+# Import all packages listed as Imports or Depends
+import(
+  robustbase,
+  GSE,
+  numDeriv,
+  plyr,
+  robust  
+)
+
+# Export all names
+export(
+  varComprob,
+  varComprob.control,
+  summary.varComprob
+  ## varComprob.initial,
+  ## varComprob.S,
+  ## varComprob.MM,
+  ## varComprob.Tau,
+  ## varComprob.compositeS,
+  ## varComprob.compositeMM,
+  ## varComprob.compositeTau 
+)
+
+S3method(print, varComprob)
+S3method(print, varComprob.compositeS)
+S3method(print, varComprob.compositeTau)
+S3method(print, varComprob.compositeMM)
+S3method(print, varComprob.S)
+S3method(print, varComprob.Tau)
+S3method(print, varComprob.MM)
+
+S3method(print, summary.varComprob)
+
+S3method(summary, varComprob)
+S3method(summary, varComprob.compositeS)
+S3method(summary, varComprob.compositeTau)
+S3method(summary, varComprob.compositeMM)
+S3method(summary, varComprob.S)
+S3method(summary, varComprob.Tau)
+S3method(summary, varComprob.MM)
