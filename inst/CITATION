@@ -12,12 +12,12 @@ citEntry(entry = "Manual",
   		   as.person("Victor J. Yohai")),
   year         = year,
   note         = note,
-  url          = "http://CRAN.R-project.org/package=robustvarComp",
+  url          = "https://CRAN.R-project.org/package=robustvarComp",
 
   textVersion  =
   paste("Claudio Agostinelli and Victor J. Yohai",
         sprintf("(%s).", year),   
         "{robustvarComp}: Robust estimation for Variance Component Models",
         paste(note, ".", sep = ""),
-        "URL http://CRAN.R-project.org/package=robustvarComp")
+        "URL https://CRAN.R-project.org/package=robustvarComp")
 )

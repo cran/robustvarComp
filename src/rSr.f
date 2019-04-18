@@ -1,4 +1,4 @@
-      SUBROUTINE rsr(x, np, nsize, jl, sigma, resser)
+      SUBROUTINE rsrf(x, np, nsize, jl, sigma, resser)
 C x: residuals from function vcrobresid (internals.R)
 C sigma: var/cov matrix from function Vprod (internals.R)
 

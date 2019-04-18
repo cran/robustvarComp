@@ -1,4 +1,4 @@
-       SUBROUTINE sdet(sigma, np, jl, sigmadet)
+      SUBROUTINE sdetf(sigma, np, jl, sigmadet)
       implicit double precision(a-h,o-z)
       implicit integer (n,j,l)
 

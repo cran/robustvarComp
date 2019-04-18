@@ -3,10 +3,10 @@
 #	varComprob.control function
 #	Author: Claudio Agostinelli and Victor J. Yohai
 #	E-mail: claudio@unive.it
-#	Date: July, 01, 2014
-#	Version: 0.1
+#	Date: February, 20, 2015
+#	Version: 0.2
 #
-#	Copyright (C) 2014 Claudio Agostinelli
+#	Copyright (C) 2015 Claudio Agostinelli
 #                      and Victor J. Yohai
 #
 #############################################################
@@ -20,7 +20,7 @@ varComprob.control <- function(init=NULL, lower=0, upper=Inf, epsilon = 0.001,
     psi = c('optimal', 'bisquare', 'rocke'),
     beta.univ = FALSE, gamma.univ = FALSE,
     fixed.init=c("lmrob.S", "lmRob"),
-    cov.init=c('2SGS', 'covOGK'), cov=TRUE, ...) {
+    cov.init=c('TSGS', '2SGS', 'covOGK'), cov=TRUE, ...) {
 
   method <- match.arg(method)
   psi <- match.arg(psi)

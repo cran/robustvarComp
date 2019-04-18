@@ -3,10 +3,10 @@
 #	Internal functions and wrappers from Fortran
 #	Author: Claudio Agostinelli and Victor J. Yohai
 #	E-mail: claudio@unive.it
-#	Date: June, 22, 2014
-#	Version: 0.1
+#	Date: September, 14, 2017
+#	Version: 0.2-1
 #
-#	Copyright (C) 2014 Claudio Agostinelli
+#	Copyright (C) 2014-2017 Claudio Agostinelli
 #                      and Victor J. Yohai
 #
 #############################################################
@@ -28,7 +28,7 @@ rssr <- function(resid, Sigma) {
     as.integer(JL),
     as.matrix(Sigma),
     rssr=matrix(0, nrow=JL, ncol=n),
-    package="varComprob")$rssr
+    package="robustvarComp")$rssr
   return(rssr)
 }
 
@@ -37,14 +37,14 @@ rsr <- function(resid, Sigma) {
   n <- ncol(resid)
   JL <- p*(p-1)/2
 
-  rsr <- .Fortran("rsr",
+  rsr <- .Fortran("rsrf",
     as.matrix(resid),
     as.integer(p), 
     as.integer(n),
     as.integer(JL),
     as.matrix(Sigma),
     rsr=matrix(0, nrow=JL, ncol=n),
-    package="varComprob")$rsr
+    package="robustvarComp")$rsr
   return(rsr)
 }
 
@@ -63,7 +63,7 @@ xssx <- function(x, Sigma) {
     as.integer(JL),
     as.matrix(Sigma),
     xssx=array(0.0, dim=c(JL,n,k,k)),
-    package="varComprob")$xssx
+    package="robustvarComp")$xssx
   return(xssx)
 }
 
@@ -83,7 +83,7 @@ xssy <- function(x, y, Sigma) {
     as.integer(JL),
     as.matrix(Sigma),
     xssy=array(0.0, dim=c(JL,n,k)),
-    package="varComprob")$xssy
+    package="robustvarComp")$xssy
   return(xssy)
 }
 
@@ -93,7 +93,7 @@ rvr <- function(resid, V) {
   JL <- p*(p-1)/2
   R <- dim(V)[3]
 
-  rvr <- .Fortran("rvr",
+  rvr <- .Fortran("rvrf",
     as.matrix(resid),
     as.integer(p), 
     as.integer(n),
@@ -101,7 +101,7 @@ rvr <- function(resid, V) {
     as.array(V),
     as.integer(R),
     rvr=array(0.0, dim=c(JL,n,R)),
-    package="varComprob")$rvr
+    package="robustvarComp")$rvr
   return(rvr)
 }
 
@@ -109,12 +109,12 @@ sdet <- function(Sigma) {
   p <- nrow(Sigma)
   JL <- p*(p-1)/2
 
-  sigmadet <- .Fortran("sdet",
+  sigmadet <- .Fortran("sdetf",
     as.matrix(Sigma),
     as.integer(p),
     as.integer(JL),
     sigmadet=double(JL),
-    package="varComprob")$sigmadet
+    package="robustvarComp")$sigmadet
   return(sigmadet)
 }
 
@@ -457,7 +457,7 @@ doSsteppw <- function(RR, scale, bb, cc, psi, tol=10^(-8), verbose=FALSE) {
       as.double(cc),
       as.integer(psi),                
       as.double(tol),
-      package="varComprob")[[4]]
+      package="robustvarComp")[[4]]
   return(S)
 }
 
@@ -475,7 +475,7 @@ doSstep <- function(m, scale, bb, cc, psi, tol=10^(-8), verbose=FALSE) {
     as.double(cc),
     as.integer(psi),
     as.double(tol),
-    package="varComprob")[[3]]
+    package="robustvarComp")[[3]]
   return(scale)
 }
 
@@ -492,7 +492,7 @@ doSsteprocke <- function(m, scale, bb, p, arp, tol=10^(-8), verbose=FALSE) {
     as.integer(p),
     as.double(dq),
     as.double(tol),
-    package="varComprob")[[3]]
+    package="robustvarComp")[[3]]
   return(scale)
 }
 
@@ -507,14 +507,14 @@ rhostar <- function(m, scale, cc, psi) {
       as.integer(n),
       as.double(scale),
       as.double(cc),
-      package="varComprob")[[1]]
+      package="robustvarComp")[[1]]
   else if (psi=="optimal")
     m <- .Fortran("soptimch",
       as.double(m),
       as.integer(n),
       as.double(scale),
       as.double(cc),
-      package="varComprob")[[1]]
+      package="robustvarComp")[[1]]
 ##    m <- Mchi(x=sqrt(m/scale), cc=cc, psi=psi)
   return(m)
 }
@@ -535,7 +535,7 @@ rhostarpw <- function(RR, scale, cc, psi) {
     as.double(cc),
     as.integer(psi),
     A=double(JL),
-    package="varComprob")$A
+    package="robustvarComp")$A
   return(A)
 }
 
@@ -564,7 +564,7 @@ doTausteppw <- function(RR, scale, cc, psi) {
     as.double(cc),
     as.integer(psi),        
     T=double(1),
-    package="varComprob")$T
+    package="robustvarComp")$T
 ####    T <- sum(scale*rhostarpw(RR, scale, cc))
   return(T)
 }
@@ -585,7 +585,7 @@ doTausteppwDet <- function(RR, scale, cc, psi, detS) {
     as.integer(psi),
     as.double(detS),
     T=double(1),
-    package="varComprob")$T
+    package="robustvarComp")$T
 ####    T <- sum(scale*rhostarpw(RR, scale, cc))
   return(T)
 }
@@ -596,7 +596,7 @@ vcrobweightsdotpw <- function(W, RR, scale) {
   N <- ncol(RR)
   Wdot <- matrix(0, nrow=nrow(W), ncol=ncol(W))
   for (jl in 1:JL)
-    Wdot[jl,] <- N*W[jl,]*scale[jl]/W[jl,]%*%RR[jl,]
+    Wdot[jl,] <- N*W[jl,]*scale[jl]/drop(W[jl,]%*%RR[jl,])
   return(Wdot)
 }
 

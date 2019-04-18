@@ -1,5 +1,10 @@
 useDynLib(robustvarComp, .registration=TRUE) 
 
+importFrom("stats", "cov", "formula", "is.empty.model", "lm.fit",
+           "mad", "median", "model.matrix", "model.offset",
+           "model.response", "model.weights", "optim", "pnorm",
+           "printCoefmat", "qchisq", "qnorm", "uniroot")
+
 # Import all packages listed as Imports or Depends
 import(
   robustbase,

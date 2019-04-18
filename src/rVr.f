@@ -1,4 +1,4 @@
-       SUBROUTINE rvr(x, np, nsize, jl, v, nr, rvir)
+       SUBROUTINE rvrf(x, np, nsize, jl, v, nr, rvir)
 C x: residuals from function lmmrobresid (internals.R)
 
       implicit double precision(a-h,o-z)

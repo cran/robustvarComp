@@ -71,6 +71,8 @@ varComprob.initial <- function(y, x, V, beta=NULL, gamma=NULL, eta0=NULL, Sigma=
       else if (control$cov.init=='2SGS') {
         rrNA <- univariate.filter(t(rr), ...)
         Sigma <- GSE(rrNA)@S
+      } else if (control$cov.init=="TSGS") {
+        Sigma <- TSGS(t(rr), ...)@S
       }
       ## } else
       ##   Sigma <- composite.S(t(rr), ...)$S      
@@ -108,8 +110,7 @@ varComprob.initial <- function(y, x, V, beta=NULL, gamma=NULL, eta0=NULL, Sigma=
   if (is.null(scales)) {
     RR <- rssr(resid=rr, Sigma=Sigma)
     if (control$psi=="rocke") {
-      warning("scales evaluated using optimal rho function with default tuning values")
-      
+###      warning("scales evaluated using optimal rho function with default tuning values")   
       psi <- "optimal"
       tuning.chi <- 1
       bb <- 0.5

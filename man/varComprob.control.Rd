@@ -18,7 +18,7 @@ varComprob.control(init = NULL, lower = 0, upper = Inf, epsilon = 0.001,
   psi = c("optimal", "bisquare", "rocke"),
   beta.univ = FALSE, gamma.univ = FALSE,
   fixed.init = c("lmrob.S", "lmRob"),
-  cov.init = c("2SGS", "covOGK"),
+  cov.init = c("TSGS", "2SGS", "covOGK"),
   cov = TRUE, ...)
 }
 
@@ -96,8 +96,8 @@ varComprob.control(init = NULL, lower = 0, upper = Inf, epsilon = 0.001,
   }
   \item{cov.init}{function or string with function name to be used to calculate
           initial covariance matrix estimate if necessary. Possible string
-          value is "2SGS" and "covOGK". Default is
-          set to "2SGS".
+          value is "TSGS", "2SGS" and "covOGK". Default is
+          set to "TSGS".
   }
   \item{cov}{logical. If \code{TRUE} the estimated variance-covariance
           matrix for the fixed and random parameters is reported.
