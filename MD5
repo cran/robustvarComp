@@ -1,10 +1,10 @@
-8c58ce8a01bffa09822be34c1aa6ca94 *DESCRIPTION
+b1210fe41b5e056085b7c75313d6400b *DESCRIPTION
 3da1e2ae2f82fcf3273b18b9f65d1878 *NAMESPACE
-af8875c7a37d3b6efe9b7736c929d817 *R/constants.R
+0e6c9cdb3ddc79699cbadbf457265ba0 *R/constants.R
 5e9ece028db479b99bf107527f04927a *R/doFit.varComprob.R
 4144cdacc2da92ba7fc8cfa55c0d4285 *R/filtering.R
 8a120fb5c83f05614e80323e7b538bac *R/formulas.R
-7abad049a5d283f70746bb8150ecce6e *R/internals.R
+28d234de2ebf0a97a51cf87ae24b4778 *R/internals.R
 720c2f04eb22215bc3323b5a2d3a6df3 *R/model.groups.R
 dd37dc2a1eb84c084c2de86aaf49c85d *R/optimal.R
 6da2932c6ae74f570ec9eff7b73cb58f *R/print.varComprob.R
@@ -39,9 +39,9 @@ d8f586ac5bc46b8f619e218288bc8b1f *src/Sdet.f
 9eee6b010059ef9ea293ce277a62f0e6 *src/doSstep.f
 9715a748ab5741ffd30f6c828d5ac48d *src/doSsteppw.f
 64f74ddc1721254cc1b69f1f8eaffac1 *src/doSsteprocke.f
-87c715aac76effef8c1ed54e9605d7c0 *src/doTausteppw.f
-2f00554ea89010f085b3e1d31966a083 *src/doTausteppwDet.f
-d4e04fdcee083c1d818170e051ec6884 *src/init.c
+0c93212e9649f22067a34f0ac423e2cd *src/doTausteppw.f
+e9193d050a87c45fc5f4ca057bbfc11e *src/doTausteppwDet.f
+0c0ec67c2bfa4e734e9220b267036177 *src/init.c
 8d985086df3c02737e694a0ec7404be2 *src/optimChi.f
 356969b15de55e2f57963d73efff0c5c *src/rSr.f
 601c3613ccb0d5133fef2e18c6ec0e9a *src/rSstarr.f
@@ -59,7 +59,7 @@ b0047a62d4ffe3e7542b806f4d0cfd74 *tests/cTau-savedvalues.R
 d6dc4fe2d71af31473c4f4b418773b0c *tests/sumS-savedvalues.R
 472684c7b38e460ff5f3d1b1b3060e10 *tests/sumcS-savedvalues.R
 5390af234129b1de489a861f6754ef3c *tests/sumcTau-savedvalues.R
-0914c81a035486c250a75fa7b877096a *tests/test-dataset.R
+2740ba9b3e99f613a713cd5bb48f1dfc *tests/test-dataset.R
 2e2732d6c84663e86c2dcba7701c8693 *tests/test-dataset.Rdata
 0e1ee0f0a7a6095c8da42441a2e2855c *tests/varComprob.MM.R
 01472a08b35a9115d60ff3218f2a3e8f *tests/varComprob.S.R

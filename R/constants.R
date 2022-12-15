@@ -4,10 +4,10 @@ constantS <- function(p, interval=c(0.0001, 30), bb=0.5, n=10000, tol=.Machine$d
   v <- qchisq(seq(0.00001,0.99999,length=n), p)
   k0 <- 1 ### Qui k0 e' uguale a 1!
   goal <- function(x) {
-    doSstep(m=v, scale=1, bb=bb, cc=x, tol=tol, verbose=verbose)-1
+    doSstep(m=v, scale=1, bb=bb, cc=x, psi="bisquare", tol=tol, verbose=verbose)-1
   }
   c1 <- uniroot(f=goal, interval=interval, tol=tol)$root
-  k1 <- mean(tukeyChi(x=sqrt(v), cc=c1))
+  k1 <- mean(Mchi(x=sqrt(v), cc=c1, psi="bisquare", deriv = 0))
   result <- list(c1=c1, k1=k1)
   return(result)
 }

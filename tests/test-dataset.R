@@ -24,7 +24,7 @@ if (!file.exists("test-dataset.Rdata")) {
     V[,,2] <- V2 <- ones(i)%x%diag(j)%x%ones(n)
     V[,,3] <- V3 <- diag(i)%x%diag(j)%x%ones(n)
 
-    S <- eta0*(robustvarComp:::Vprod(V, gamma)) ## Variance and Covariance matrix of Y
+    S <- eta0*(robustvarComp::Vprod(V, gamma)) ## Variance and Covariance matrix of Y
                  ## i.e. \eta_0 (V_0+\sum_{r=1}^{R}\gamma_{0r} V_{r})
                  ## where V_0 = I_0
                  ## V0 is added in Vprod function automatically
@@ -44,7 +44,7 @@ if (!file.exists("test-dataset.Rdata")) {
     for (N in 1:size)
       x[,N,] <- cbind(rep(1,p), matrix(rnorm(p*k, mean=0, sd=1), p, k))
     e <- rmvnorm(n=size, mean=rep(0, p), sigma=S)
-    y <- t(e)+robustvarComp:::xprod(x, beta) ## the Y observations
+    y <- t(e)+robustvarComp::xprod(x, beta) ## the Y observations
   
     Y <- as.vector(y)
     X <- matrix(nrow=0, ncol=k+1)

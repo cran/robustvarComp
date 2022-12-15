@@ -1,7 +1,7 @@
       SUBROUTINE dotstep(x, jl, nsize, scale, cc, ipsi, w)
         implicit double precision(a-h,o-z)
         implicit integer (n,i)
-        dimension x(jl,nsize), scale(jl), a(jl)
+        dimension x(jl,nsize), scale(jl)
         G0 =  1.792d00
         G1 = -1.944d00 
         G2 =  1.728d00
